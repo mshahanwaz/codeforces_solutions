@@ -62,28 +62,32 @@ bool ckmin(T &a, T b) { return b < a ? a = b, 1 : 0; };
 
 /* Main Code */
 
+int rightmost_x(vi &b) {
+	int x = 1;
+	int n = sz(b) - 1;
+	while(x + 1 <= n && b[x + 1] == b[1]) x++;
+	return x;
+}
+
+void apply(vi &b, int l, int r) {
+	int k = (r - l + 1) / 2;
+	rep(k) b[l + k + i] = b[l + i];
+}
+
 void solve() {
 	int n; cin >> n;
-	int N = 200004;
-	vi tmp(N);
-	rep(n) {
-		int t; cin >> t;
-		++tmp[t];
+	vi a(n + 1);
+	rep(n) cin >> a[i + 1];
+	vi b = a;
+	rev(begin(b) + 1, end(b));
+	int ans = 0;
+	while(rightmost_x(b) != n) {
+		int x = rightmost_x(b);
+		if(2 * x > n) {
+			apply(b, x - (n - x) + 1, n);
+		} else apply(b, 1, 2 * x);
+		ans++;
 	}
-	sort(rall(tmp));
-	int p = 0, multi = tmp[0];
-	if(multi == n) {
-		cout << 0 << endl;
-		return;
-	}
-	int rem = n - multi;
-	int cnt = 0;
-	while(cnt < rem) {
-		++p;
-		cnt = multi * ((1 << p) - 1);
-	}
-	if(cnt > rem) --p;
-	int ans = p + (cnt - rem > 0);
 	cout << ans << endl;
 }
 
