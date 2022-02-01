@@ -64,10 +64,9 @@ bool ckmin(T &a, T b) { return b < a ? a = b, 1 : 0; };
 
 void solve() {
 	str s; cin >> s;
-	int l = 0, r = sz(s) - 1;
-	while(s[l] == '0') l++;
-	while(s[r] == '0') r--;
-	cout << r - l + 1 << endl;
+	int zero = 0;
+	per(sz(s) - 1) zero += s[i] == '0';
+	cout << sz(s) << endl;
 }
 
 int main() {

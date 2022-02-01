@@ -67,8 +67,8 @@ ll k, w, a;
 ll thc, tdc;
 
 bool check() {
-	int cnt1 = ((thc / dm) + (thc % dm > 0));
-	int cnt2 = ((hm / tdc) + (hm % tdc > 0));
+	ll cnt1 = (thc + dm - 1) / dm;
+	ll cnt2 = (hm + tdc - 1) / tdc;
 	return cnt1 >= cnt2; 
 }
 
@@ -79,7 +79,7 @@ void solve() {
 	thc = hc;
 	tdc = dc;
 	bool flag = check();
-	rep(k) {
+	rep(k + 1) {
 		thc = hc + i * a;
 		tdc = dc + (k - i) * w;
 		if(check()) {
@@ -87,8 +87,8 @@ void solve() {
 			break;
 		}
 	}
-	if(!flag) cout << "NO" << endl;
-	else cout << "YES" << endl;
+	if(flag) cout << "YES" << endl;
+	else cout << "NO" << endl;
 }
 
 int main() {

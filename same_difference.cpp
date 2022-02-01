@@ -63,18 +63,16 @@ bool ckmin(T &a, T b) { return b < a ? a = b, 1 : 0; };
 /* Main Code */
 
 void solve() {
-	int n;
-  cin >> n;
-  map<int, int> a;
-  long long res = 0;
-  for (int i = 0; i < n; i++) {
-    int x;
-    cin >> x;
-    x -= i;
-    res += a[x];
-    a[x]++;
-  }
-  cout << res << endl;
+	ll n;
+  	cin >> n;
+	map<ll, ll> m;
+	rep(n) {
+		ll t; cin >> t;
+		m[t - i - 1]++;
+	}
+	ll ans = 0;
+	repa(x, m) ans += x.se * (x.se - 1) / 2;
+	cout << ans << endl;
 }
 
 int main() {
