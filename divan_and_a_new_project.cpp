@@ -11,22 +11,24 @@ int main() {
 	int tc = 1;
     cin >> tc;
 	while (tc--) {
-		int n;
+		ll n;
 		cin >> n;
-		vector<pair<int, int>> a(n);
-		for (int i = 0; i < n; ++i) {
+		vector<pair<ll, ll>> a(n);
+		for (ll i = 0; i < n; ++i) {
 			cin >> a[i].first;
 			a[i].second = i + 1;
 		}
-		sort(a.begin(), a.end());
-		deque<int> ans;
-		bool flag = false;
-		for (int i = 0; i < n; ++i) {
-			if (flag) ans.push_front(a[i].second);
-			else ans.push_back(a[i].second);
-			flag = !flag;
+		ll res = 0;
+		sort(a.rbegin(), a.rend());
+		ll curr = 1;
+		vector<ll> ans(n + 1);
+		for (ll i = 0; i < n; ++i) {
+			res += 2 * abs(curr) * a[i].first;
+			ans[a[i].second] = curr;
+			if (curr > 0) curr *= -1;
+			else curr = abs(curr) + 1;
 		}
-		cout << "0 ";
+		cout << res << endl;
 		for (auto x: ans) {
 			cout << x << ' ';
 		}

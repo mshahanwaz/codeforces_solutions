@@ -13,22 +13,13 @@ int main() {
 	while (tc--) {
         int n;
         cin >> n;
-        vector<pair<int, int>> a(n);
+        vector<int> a(n);
         for (int i = 0; i < n; ++i) {
-            cin >> a[i].first;
-            a[i].second = i;
+            cin >> a[i];
         }
-        sort(a.begin(), a.end());
-        int sum = 0;
-        bool flag = false;
-        for (int i = 0; i < n - 1; ++i) {
-            sum += a[i].second;
-            if (sum == i * (i + 1) / 2) {
-                flag = true;
-                break;
-            }
-        }
-        cout << (!flag ? "YES" : "NO") << endl;
+		if(!is_sorted(a.begin(), a.end()))
+			cout << "YES\n";
+		else cout << "NO\n";
     }
 	return 0;
 }
