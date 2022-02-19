@@ -11,18 +11,30 @@ int main() {
 	int tc = 1;
     cin >> tc;
 	while (tc--) {
- 		ll n;
+		ll n;
 		cin >> n;
 		vector<ll> a(n);
-		for (int &x: a) 
+		for (ll &x: a) 
 			cin >> x;
-		if (is_sorted(a.begin(), a.end()) {
-			cout << "YES" << endl;
-			break;
+		bool is_possible = true;
+		int prevOdd = -1;
+		int prevEven = -1;
+		for (int i = 0; is_possible && i < n; ++i) {
+			if (a[i] & 1) {
+				if (prevOdd == -1) prevOdd = a[i];
+				else {
+					if (prevOdd > a[i]) is_possible = false;
+					else prevOdd = a[i];
+				}
+			} else {
+				if (prevEven == -1) prevEven = a[i];
+				else {
+					if (prevEven > a[i]) is_possible = false;
+					else prevEven = a[i];
+				}
+			}
 		}
-		vector<ll> b(a.begin(), a.end());
-		sort(b.begin(), b.end());
-		
+		cout << (is_possible ? "YES" : "NO") << endl;
     }
 	return 0;
 }
