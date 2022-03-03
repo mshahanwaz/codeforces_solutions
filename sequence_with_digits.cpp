@@ -20,7 +20,7 @@ int main() {
 	int TC = 1;
 	cin >> TC;
 	while (TC--) {
-		int a1, k;
+		ll a1, k;
 		cin >> a1 >> k;
 		--k;
 		while (k--) {
