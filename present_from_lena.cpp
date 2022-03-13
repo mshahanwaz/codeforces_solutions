@@ -19,10 +19,14 @@ int main() {
                 cout << " ";
             }
             for (int i = 0; i <= levels; ++i) {
-                cout << i << ' ';
+                cout << i;
+                if (levels) 
+                    cout << " ";
             }
             for (int i = levels - 1; i >= 0; --i) {
-                cout << i << ' ';
+                cout << i;
+                if (i > 0) 
+                    cout << " ";
             }
             cout << endl;
             ++levels;
@@ -33,10 +37,13 @@ int main() {
                 cout << " ";
             }
             for (int i = 0; i <= levels; ++i) {
-                cout << i << ' ';
+                cout << i;
+                if (levels)
+                    cout << " ";
             }
             for (int i = levels - 1; i >= 0; --i) {
-                cout << i << ' ';
+                cout << i; 
+                if (i > 0) cout << " ";
             }
             cout << endl;
             --levels;
